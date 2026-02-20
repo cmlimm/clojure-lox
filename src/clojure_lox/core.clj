@@ -4,7 +4,6 @@
   (:require [clojure-lox.scanner :as scanner])
   (:require [clojure.tools.trace :as trace]))
 
-
 (defn run 
   ([string] (run string false))
   ([string interrupt-on-error?]
@@ -16,9 +15,7 @@
          )
        (println string)))))
 
-
 (def interrupt-on-error true)
-
 
 (defn run-prompt
   ([] (do
@@ -33,18 +30,15 @@
                        (flush)
                        (read-line)))))))
 
-
 (defn run-file [filename]
   (run (slurp filename) interrupt-on-error))
-
 
 (defn -main 
   ([] (run-prompt))
   ([filename] (run-file filename))
   ([filename & args] (do
-              									(println "Usage: lox [script]")
-             										(java.lang.System/exit 64))))
-
+                       (println "Usage: lox [script]")
+                       (java.lang.System/exit 64))))
 
 ; (-main "test.lox")
 ; (trace/untrace-ns lex-interpreter.core)

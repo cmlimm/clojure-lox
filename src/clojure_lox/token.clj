@@ -1,6 +1,5 @@
 (ns clojure-lox.token)
 
-
 (defn get-token [type lexeme literal line]
   {
    :type type

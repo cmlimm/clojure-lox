@@ -2,7 +2,6 @@
   (:require [clojure-lox.token :as token])
   (:require [clojure.tools.trace :as trace]))
 
-
 (defn get-scanner [source]
   {
    :source source
@@ -12,7 +11,6 @@
    :current 0
    :line 1
    })
-
 
 (defn add-token 
   ([scanner token-type] (add-token scanner token-type nil))
@@ -25,15 +23,12 @@
                                       literal
                                       (scanner :line))))))
 
-
 (defn add-error [scanner message]
   (assoc scanner :errors (conj (scanner :errors) {:message message
                                                   :line (scanner :line)})))
 
-
 (defn advance [scanner]
   (assoc scanner :current (inc (scanner :current))))
-
 
 (defn scan-token [scanner]
   (let [char (get (scanner :source) (scanner :current))
@@ -51,14 +46,11 @@
    	  \* (add-token scanner :token/star)
       (add-error scanner "Invalid character."))))
 
-
 (defn next-token [scanner]
   (assoc scanner :start (scanner :current)))
 
-
 (defn end? [scanner]
   (>= (scanner :current) (count (scanner :source))))
-
 
 (defn scan [source]
   (loop [scanner (get-scanner source)]
