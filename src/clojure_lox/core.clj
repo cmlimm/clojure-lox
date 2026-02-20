@@ -37,7 +37,7 @@
   ([] (run-prompt))
   ([filename] (run-file filename))
   ([filename & args] (do
-                       (println "Usage: lox [script]")
+                       (println "Usage: clojure-lox [script]")
                        (java.lang.System/exit 64))))
 
 ; (-main "test.lox")
